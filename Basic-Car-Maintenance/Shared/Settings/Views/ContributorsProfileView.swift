@@ -13,10 +13,12 @@ struct ContributorsProfileView: View {
     let name: String
     let imgUrl: String
     @ScaledMetric(relativeTo: .largeTitle) var imageSize: CGFloat = 50
+    let contributionsCount: Int
 
-    init(name: String, url: String) {
+    init(name: String, url: String, contributionsCount: Int) {
         self.name = name
         self.imgUrl = url
+        self.contributionsCount = contributionsCount
     }
 
     var body: some View {
@@ -50,11 +52,19 @@ struct ContributorsProfileView: View {
                 }
             }
             
-            Text(name)
+            VStack(alignment: .leading) {
+                Text(name).bold()
+                Text("^[\(contributionsCount) contributions](inflect: true)")
+                    .foregroundStyle(.secondary)
+            }
         }
     }
 }
 
 #Preview {
-    ContributorsProfileView(name: "mikaela", url: "https://avatars.githubusercontent.com/u/22946902?v=4")
+    ContributorsProfileView(
+        name: "mikaela",
+        url: "https://avatars.githubusercontent.com/u/22946902?v=4",
+        contributionsCount: 1
+    )
 }

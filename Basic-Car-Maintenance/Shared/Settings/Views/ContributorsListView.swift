@@ -16,10 +16,14 @@ struct ContributorsListView: View {
             if !viewModel.sortedContributors.isEmpty {
                 ForEach(viewModel.sortedContributors) { contributor in
                     Link(
-                        destination: URL(string: contributor.htmlURL) ??
-                        GitHubURL.repo) {
-                            ContributorsProfileView(name: contributor.login, url: contributor.avatarURL)
-                        }
+                        destination: URL(string: contributor.htmlURL) ?? GitHubURL.repo
+                    ) {
+                        ContributorsProfileView(
+                            name: contributor.login,
+                            url: contributor.avatarURL,
+                            contributionsCount: contributor.contributions
+                        )
+                    }
                 }
             } else {
                 ProgressView()
@@ -37,5 +41,7 @@ struct ContributorsListView: View {
 
 #Preview {
     let viewModel = SettingsViewModel(authenticationViewModel: AuthenticationViewModel())
-    return ContributorsListView(viewModel: viewModel)
+    return NavigationView {
+        ContributorsListView(viewModel: viewModel)
+    }
 }
