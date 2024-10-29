@@ -16,11 +16,7 @@ struct ContributorsListView: View {
             if !viewModel.sortedContributors.isEmpty {
                 ForEach(viewModel.sortedContributors) { contributor in
                     Link(destination: URL(string: contributor.htmlURL) ?? GitHubURL.repo) {
-                        ContributorsProfileView(
-                            name: contributor.login,
-                            url: contributor.avatarURL,
-                            contributionsCount: contributor.contributions
-                        )
+                        ContributorsProfileView(contributor: contributor)
                     }
                 }
             } else {
@@ -29,9 +25,7 @@ struct ContributorsListView: View {
         }
         .analyticsView("\(Self.self)")
         .task {
-            Task {
-                await viewModel.getContributors()
-            }
+            await viewModel.getContributors()
         }
         .navigationTitle("Contributors")
     }

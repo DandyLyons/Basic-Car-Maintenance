@@ -10,20 +10,13 @@ import SwiftUI
 
 struct ContributorsProfileView: View {
     
-    let name: String
-    let imgUrl: String
-    @ScaledMetric(relativeTo: .largeTitle) var imageSize: CGFloat = 50
-    let contributionsCount: Int
-
-    init(name: String, url: String, contributionsCount: Int) {
-        self.name = name
-        self.imgUrl = url
-        self.contributionsCount = contributionsCount
-    }
+    let contributor: Contributor
+    
+    @ScaledMetric(relativeTo: .largeTitle) private var imageSize: CGFloat = 50
 
     var body: some View {
         HStack {
-            AsyncImage(url: URL(string: imgUrl)!) { phase in
+            AsyncImage(url: URL(string: contributor.avatarURL)!) { phase in
                 switch phase {
                 case .empty:
                     ProgressView()
@@ -53,8 +46,8 @@ struct ContributorsProfileView: View {
             }
             
             VStack(alignment: .leading) {
-                Text(name).bold()
-                Text("^[\(contributionsCount) contributions](inflect: true)")
+                Text(contributor.login).bold()
+                Text("^[\(contributor.contributions) contributions](inflect: true)")
                     .foregroundStyle(.secondary)
             }
         }
@@ -63,8 +56,14 @@ struct ContributorsProfileView: View {
 
 #Preview {
     ContributorsProfileView(
-        name: "mikaela",
-        url: "https://avatars.githubusercontent.com/u/22946902?v=4",
-        contributionsCount: 1
+        contributor: Contributor(
+            login: "",
+            id: 1,
+            nodeID: "",
+            avatarURL: "https://avatars.githubusercontent.com/u/22946902?v=4",
+            url: "",
+            htmlURL: "",
+            contributions: 100
+        )
     )
 }

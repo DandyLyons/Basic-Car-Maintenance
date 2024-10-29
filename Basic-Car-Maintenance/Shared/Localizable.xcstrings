@@ -75,6 +75,9 @@
         }
       }
     },
+    "^[%lld contributions](inflect: true)" : {
+
+    },
     "🦄 Mikaela Caron - Maintainer" : {
       "comment" : "Link to maintainer Github account.",
       "localizations" : {
