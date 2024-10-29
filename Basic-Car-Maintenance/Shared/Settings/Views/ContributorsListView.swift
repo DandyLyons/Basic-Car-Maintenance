@@ -41,7 +41,7 @@ struct ContributorsListView: View {
 
 #Preview {
     let viewModel = SettingsViewModel(authenticationViewModel: AuthenticationViewModel())
-    return NavigationView {
+    return NavigationStack {
         ContributorsListView(viewModel: viewModel)
     }
 }
