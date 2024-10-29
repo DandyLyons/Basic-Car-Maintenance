@@ -18,7 +18,7 @@ struct ContributorsListView: View {
                     Link(destination: URL(string: contributor.htmlURL) ?? GitHubURL.repo) {
                         ContributorsProfileView(contributor: contributor)
                     }
-                    .buttonStyle(.plain)
+                    .foregroundStyle(.primary)
                 }
             } else {
                 ProgressView()
