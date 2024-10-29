@@ -15,9 +15,7 @@ struct ContributorsListView: View {
         List {
             if !viewModel.sortedContributors.isEmpty {
                 ForEach(viewModel.sortedContributors) { contributor in
-                    Link(
-                        destination: URL(string: contributor.htmlURL) ?? GitHubURL.repo
-                    ) {
+                    Link(destination: URL(string: contributor.htmlURL) ?? GitHubURL.repo) {
                         ContributorsProfileView(
                             name: contributor.login,
                             url: contributor.avatarURL,
