@@ -76,7 +76,7 @@
       }
     },
     "^[%lld contributions](inflect: true)" : {
-
+      "comment" : "the number of contributions by a contributor"
     },
     "🦄 Mikaela Caron - Maintainer" : {
       "comment" : "Link to maintainer Github account.",

@@ -47,7 +47,10 @@ struct ContributorsProfileView: View {
             
             VStack(alignment: .leading) {
                 Text(contributor.login).bold()
-                Text("^[\(contributor.contributions) contributions](inflect: true)")
+                Text(
+                    "^[\(contributor.contributions) contributions](inflect: true)",
+                    comment: "the number of contributions by a contributor"
+                )
                     .foregroundStyle(.secondary)
             }
         }
